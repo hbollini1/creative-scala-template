@@ -3,10 +3,12 @@ import doodle.core.Image._
 import doodle.syntax._
 import doodle.jvm.Java2DCanvas._
 import doodle.backend.StandardInterpreter._
-
+import doodle.backend.Draw
 // To use this example, open the SBT console and type:
 //
 // Example.image.draw
-object Example {
+object Example extends App{
+
   val image = circle(10) on circle(20) on circle(30)
+  Example.image.draw
 }

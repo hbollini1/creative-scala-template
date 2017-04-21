@@ -77,13 +77,81 @@ object Chapter7 extends App {
 
 
   def sierpinski(count: Int): Image = {
-    val triangle = Image.triangle(10,10)
+    val triangle = Image.triangle(10, 10)
     val unit = (triangle above (triangle beside triangle))
 
     count match {
       case 0 => unit
-      case n => (sierpinski(n-1) above (sierpinski(n-1) beside sierpinski(n-1)))
+      case n => (sierpinski(n - 1) above (sierpinski(n - 1) beside sierpinski(n - 1)))
     }
   }
+
   sierpinski(3).draw
+
+
+  // Given a natural number, returns that number
+  // Examples:
+  // identity(0) == 0
+  // identity(3) == 3
+  def identity(n: Int): Int =
+  n match {
+    case 0 => 0
+    case n => 1 + identity(n - 1)
+  } // Yes above would return expected
+
+
+  // Given a natural number, double that number
+  // Examples:
+  // double(0) == 0
+  // double(3) == 6
+  def double(n: Int): Int =
+  n match {
+    case 0 => 0
+    case n => 2 * double(n - 1)
+  } // nope method would return 2*2*2
+
+
+  def gradientBoxes(n: Int): Image = {
+    n match {
+
+      case 0 => Image.empty
+      case n =>
+        (Image.rectangle(20, 20) lineWidth (5) lineColor (Color.blueViolet.spin((n * 10).degrees))
+          fillColor (Color.red.spin((n * 10).degrees))
+          beside gradientBoxes(n - 1))
+    }
+  }
+
+  gradientBoxes(5).draw
+
+
+  def concentriccircles(n: Int): Image = {
+    n match {
+      case 0 => Image.empty
+      case n => Circle(n * 10) under concentriccircles(n - 1)
+    }
+
+  }
+
+  concentriccircles(10).draw
+
+
+  def unitCircle (size:Int,color:Color)={
+    circle(size) lineWidth(3) lineColor(color)
+  }
+  def fadeCircles(n:Int,size:Int,color:Color): Image ={
+    n match {
+      case 0 => Image.empty
+      case n => unitCircle(size,color) under fadeCircles(n-1,size-7,color.fadeOutBy(0.15.normalized))
+    }
+  }
+  fadeCircles(10,10,Color.red).draw
+
+  def colorChangingColor(n:Int,size:Int,color:Color): Image ={
+    n match {
+      case 0 => Image.empty
+      case n => unitCircle(size,color) under colorChangingColor(n-1,size-7,color.spin(10.degrees))
+    }
+  }
+  colorChangingColor(10,10,Color.red).draw
 }

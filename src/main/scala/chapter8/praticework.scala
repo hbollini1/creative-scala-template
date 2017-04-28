@@ -1,10 +1,6 @@
 package chapter8
 
-import doodle.syntax._
-import doodle.jvm.Java2DCanvas._
-import doodle.backend.StandardInterpreter._
-import doodle.core.Image.Circle
-import doodle.core.{Angle, Color, Image, Point}
+import java.awt.Image
 
 /**
   * Created by Harishkumar on 4/27/17.
@@ -113,5 +109,43 @@ object test3 extends App{
     concentricShapes(10, rainbowCircle).draw
 
 }
+
+object qaz extends App{
+
+  import cats.Monoid
+  import cats.implicts._
+
+  implicit object pointInstance extends Monoid [point]{
+    def empty = Point.zero
+    def combine (x:Point,y:Point):Point =
+      Point (x.x+y.x+y.y)
+  }
+  val circle: Double = > (Angle => Point) =
+    (frequency:Double) => (a;Angle)=> Point.polar(1.0,a*frequency)
+  val scale = (r:Double)=> (pt:Point) => Point(pt.x*r,pt.y*r)
+
+  val curve = (r:Double) => (circle(1) andThen scale(r)) |+| (circle(6) andThen scale(r/2)) |+| (circle(-14) andThen scale(r/3))
+
+
+  val sample: Int => (Angle => Image)=> Image =
+    (n:Int) => {
+      val step = Angle.one / n
+      (parameteric: (Angle => Image)) => {
+        def loop(count: Int): Image =
+          count match {
+            case 0 => Image.empty
+            case n => parametric(step * n) on loop(n - 1)
+          }
+        loop(n)
+      }
+    }
+  val style:Point => Image = {
+
+  }
+
+  sample(500)(curve(200))
+}
+
+
 
 

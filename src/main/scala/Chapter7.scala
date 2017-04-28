@@ -1,4 +1,4 @@
-import doodle.core.Image
+
 import doodle.core.Image._
 import doodle.syntax._
 import doodle.jvm.Java2DCanvas._

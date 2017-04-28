@@ -11,3 +11,34 @@ Finally type `console` in SBT and then type `Example.image.draw`. If you see a p
 You can edit the file `Example.scala` to create your own code. See [Creative Scala][creative-scala] for more!
 
 [creative-scala]: http://underscore.io/training/courses/creative-scala/
+
+
+
+what is first class values
+  something is first class when can pass it to a method return it froma method, or give it a name with a `val`
+  methods are not first class
+
+why are first class values useful
+  it allows us to more clearly define heiarchial set of functions--abstarction
+  composition
+
+what iis
+
+  .curried
+
+
+  import cats.Monoid
+  import cats.implicts._
+
+  implicit object pointInstance extends Monoid [point]{
+  def empty = Point.zero
+  def combine (x:Point,y:Point):Point =
+    Point (x.x+y.x+y.y)
+  }
+  val circle: Double = > (Angle => Point) =
+  (frequency:Double) => (a;Angle)=> Point.polar(1.0,a*frequency)
+  val scale = (r:Double)=> (pt:Point) => Point(pt.x*r,pt.y*r)
+
+  val curve = (r:Double) => (circle(1) andThen scale(r)) |+| (circle(6) andThen scale(r/2)) |+| (circle(-14) andThen scale(r/3))
+
+

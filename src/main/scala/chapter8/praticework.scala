@@ -1,10 +1,11 @@
 package chapter8
 
-import java.awt.Image
+import doodle.core.Image._
+import doodle.syntax._
+import doodle.jvm.Java2DCanvas._
+import doodle.backend.StandardInterpreter._
+import doodle.core.{Angle, Color, Image, Point}
 
-/**
-  * Created by Harishkumar on 4/27/17.
-  */
 object  praticework extends App {
 
   val dot = Image.circle(5).lineWidth(3).lineColor(Color.crimson)
@@ -110,18 +111,20 @@ object test3 extends App{
 
 }
 
+/*
 object qaz extends App{
 
-  import cats.Monoid
-  import cats.implicts._
+  import cats._
 
-  implicit object pointInstance extends Monoid [point]{
+
+
+  implicit object pointInstance extends Monoid [Point]{
     def empty = Point.zero
     def combine (x:Point,y:Point):Point =
       Point (x.x+y.x+y.y)
   }
   val circle: Double = > (Angle => Point) =
-    (frequency:Double) => (a;Angle)=> Point.polar(1.0,a*frequency)
+    (frequency:Double) => (a: Angle)=> Point.polar(1.0,a*frequency)
   val scale = (r:Double)=> (pt:Point) => Point(pt.x*r,pt.y*r)
 
   val curve = (r:Double) => (circle(1) andThen scale(r)) |+| (circle(6) andThen scale(r/2)) |+| (circle(-14) andThen scale(r/3))
@@ -149,3 +152,4 @@ object qaz extends App{
 
 
 
+*/

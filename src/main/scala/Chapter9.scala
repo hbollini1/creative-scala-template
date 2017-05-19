@@ -192,4 +192,18 @@ println(onesmap(5))
 println("List(1,2,3,4,5,6)")
   println(reverse(List(1,2,3,4,5,6)))
 
+
+  def concentricCircles(n: Int, color: Color): Image = {
+    n match {
+      case 0 => circle(10) fillColor color
+      case n => concentricCircles(n - 1, color.spin(15.degrees)) on (circle(n * 10) fillColor color)
+    }
+  }
+  concentricCircles(2,Color.red)
+}
+
+object GoBeyond extends App {
+
+
+
 }

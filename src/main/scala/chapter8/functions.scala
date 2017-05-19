@@ -1,3 +1,4 @@
+/*
 // Functions
 import cats.Monoid
 import cats.implicits._
@@ -19,7 +20,7 @@ object qazqaz extends App {
   val curve: Double => Angle => Point =
     (r: Double) =>
       (circle(1) andThen scale(r)) |+| (circle(6) andThen scale(r / 2)) |+| (circle(-14) andThen scale(r / 3))
-
+circle
   // (circle(1) andThen scale(200))
   // circle: Double => (Angle => Point)
   // scale: Double => (Point => Point)
@@ -30,7 +31,7 @@ object qazqaz extends App {
   // (Angle => Point) |+| (Angle => Point) |+| (Angle => Point)
   // Angle => Point
 
-  // import cats.syntax.semigroup._
+  // import cats.syntax.semigroup._semigroup
 
   // Don't copy after here ---------------
 
@@ -63,3 +64,4 @@ object qazqaz extends App {
 
   image.draw
 }
+*/

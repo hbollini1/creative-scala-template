@@ -5,6 +5,8 @@ import doodle.jvm.Java2DCanvas._
 import doodle.backend.StandardInterpreter._
 import doodle.core.{Color, Image}
 
+import scala.annotation.tailrec
+
 /**
   * Created by Harishkumar on 4/20/17.
   */
